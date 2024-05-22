@@ -42,7 +42,9 @@ public class Controller {
 			throw new RuntimeErrorException(null, "El numero debe ser mayor a 50");
 		}
 		int var=valor%50;
-		valor+=(50-var);
+		if(var!=0) {
+			valor+=(50-var);			
+		}
 		System.out.println(valor);
 		Convertir(valor,solucionA,0);
 		}catch(Exception e){
@@ -82,7 +84,7 @@ public class Controller {
 	public void imprimirSolucion() {
 		vis.imprimirConSalto("La mejor solucion es: ");
 	if (mejorSolucion.isEmpty()) {
-		vis.imprimirConSalto("Las monedas no son suficientes");
+		vis.imprimirConSalto("Las monedas no son suficientes:");
 	}
 	for (Moneda i: mejorSolucion) {
 		vis.imprimirConSalto(i.getNombre());
