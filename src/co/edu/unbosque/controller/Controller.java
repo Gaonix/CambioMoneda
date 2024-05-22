@@ -2,6 +2,8 @@ package co.edu.unbosque.controller;
 
 import java.util.ArrayList;
 
+import javax.management.RuntimeErrorException;
+
 import co.edu.unbosque.model.Moneda;
 import co.edu.unbosque.view.Vista;
 
@@ -23,18 +25,31 @@ public class Controller {
 	}
 
 	private void cargarMonedas() {
-		caja.add(new Moneda("1000 pesos", 5, 1000));
-		caja.add(new Moneda("500  pesos", 5, 500));
-		caja.add(new Moneda("200  pesos", 5, 200));
-		caja.add(new Moneda("100  pesos", 5, 100));
-		caja.add(new Moneda("50   pesos", 5, 50));
+		caja.add(new Moneda("1000 pesos", 10, 1000));
+		caja.add(new Moneda("500  pesos", 10, 500));
+		caja.add(new Moneda("200  pesos", 10, 200));
+		caja.add(new Moneda("100  pesos", 10, 100));
+		caja.add(new Moneda("50   pesos", 10, 50));
 
 	}
 
 	private void run() {
 		vis.imprimirConSalto("Ingrese  La cantidad a convertir");
+		try {
+			
 		int valor=vis.leerEntero();
+		if(valor<50) {
+			throw new RuntimeErrorException(null, "El numero debe ser mayor a 50");
+		}
+		int var=valor%50;
+		valor+=(50-var);
+		System.out.println(valor);
 		Convertir(valor,solucionA,0);
+		}catch(Exception e){
+			vis.imprimirConSalto(e.getMessage());
+		run();	
+		}
+
 	}
 
 	public void Convertir( int valorRestante,ArrayList<Moneda>solucionA,int aux) {
