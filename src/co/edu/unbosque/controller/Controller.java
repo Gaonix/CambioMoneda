@@ -45,7 +45,6 @@ public class Controller {
 		if(var!=0) {
 			valor+=(50-var);			
 		}
-		System.out.println(valor);
 		Convertir(valor,solucionA,0);
 		}catch(Exception e){
 			vis.imprimirConSalto(e.getMessage());
