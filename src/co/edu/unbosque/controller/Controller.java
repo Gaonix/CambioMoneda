@@ -81,9 +81,13 @@ public class Controller {
 	}
 	public void imprimirSolucion() {
 		vis.imprimirConSalto("La mejor solucion es: ");
+	if (mejorSolucion.isEmpty()) {
+		vis.imprimirConSalto("Las monedas no son suficientes");
+	}
 	for (Moneda i: mejorSolucion) {
 		vis.imprimirConSalto(i.getNombre());
 	}
+	
 	
 	}
 }
