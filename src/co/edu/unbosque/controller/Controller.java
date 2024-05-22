@@ -43,7 +43,7 @@ public class Controller {
 		}
 		int var=valor%50;
 		if(var!=0) {
-			valor+=(50-var);			
+			throw new RuntimeErrorException(null,"No existen combinaciones para ese cambio" );
 		}
 		Convertir(valor,solucionA,0);
 		}catch(Exception e){
