@@ -1,0 +1,1 @@
+El problema de cambio de monedas aborda la forma de encontrar el número mínimo de monedas (de ciertas denominaciones) tales que entre ellas suman una cierta cantidad.esto utilizando el backtraking y rama y poda
