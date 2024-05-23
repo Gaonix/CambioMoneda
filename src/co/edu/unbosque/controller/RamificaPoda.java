@@ -36,7 +36,7 @@ public class RamificaPoda {
 		if(var!=0) {
 			throw new RuntimeErrorException(null,"No existen combinaciones para ese cambio" );
 		}
-		Cambio(valor,0);
+		Cambio(valor,0, 0);
 		}catch(Exception e){
 			vis.imprimirConSalto(e.getMessage());
 		run();	
@@ -45,16 +45,16 @@ public class RamificaPoda {
 		
 	}
 
-	private void Cambio(int valor, int index) {
+	private void Cambio(int valor, int index, int can) {
 		if(valor==0) {
-			if(solucionA.size()<cantidadMonedas) {
-				cantidadMonedas=solucionA.size();
+			if(can<cantidadMonedas) {
+				cantidadMonedas=can;
 				mejorSolucion.clear();
 				mejorSolucion.addAll(solucionA);
 			}
 			return;
 		}
-		if(valor<0) {
+		if(valor<0||can>=cantidadMonedas) {
 			return;
 		}
 		for (int i=index;i<caja.size();i++) {
@@ -63,7 +63,7 @@ public class RamificaPoda {
 				continue;
 			}
 			solucionA.add(m);
-			Cambio( valor-m.getValor(),i);
+			Cambio( valor-m.getValor(),i,can+1);
 			solucionA.remove(solucionA.size()-1);
 		}
 	}
